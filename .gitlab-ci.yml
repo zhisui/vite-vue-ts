@@ -1,0 +1,32 @@
+include:
+    - project: 'ci/templates'
+      ref: 0.6.0
+      file:
+          - 'Jobs/.default-rules.yml'
+          - 'Jobs/.need-docker.yml'
+          - 'Jobs/.docker-build.yml'
+          - 'Jobs/.deploy-hadron.yml'
+
+stages:
+    - build
+    - package
+    - deploy
+
+compile:
+    extends:
+        - .default-rules
+    image: node:14-buster-slim
+    stage: build
+    script:
+        - npm i @antfu/ni -g
+        - ni --frozen
+        - nr build
+    # 流水线产出的工件, 也就是产品
+    ## artifacts 在上一个 stage 生产后, 在之后 stage 的所有 job 中都会有此处定义的文件, 可以直接访问
+    artifacts:
+        name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
+        expire_in: 1 day
+        paths:
+            # 将编译后生产的 dist 文件夹作为工件保留
+            # 之后 stage 的所有 job 可以直接访问其 ./dist 文件夹
+            - "dist"

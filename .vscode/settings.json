@@ -1,0 +1,73 @@
+{
+  "prettier.printWidth": 110,
+  "prettier.useTabs": false,
+  "prettier.tabWidth": 4,
+  "prettier.enable": true,
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.trailingComma": "es5",
+  "vue3snippets.tabWidth": 4,
+  "javascript.format.semicolons": "insert",
+  "typescript.format.semicolons": "insert",
+  "editor.detectIndentation": false,
+  "editor.tabSize": 4,
+  "scssFormatter.singleQuote": true,
+  "emmet.includeLanguages": {
+    "vue-html": "html"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "editor.tabCompletion": "on",
+  "[scss]": {
+    "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+  },
+  "volar.autoCompleteRefs": true,
+  "volar.completion.preferredTagNameCase": "auto-kebab",
+  "volar.completion.preferredAttrNameCase": "auto-kebab",
+  "editor.linkedEditing": true,
+  "html.autoClosingTags": true,
+  "html.autoCreateQuotes": true,
+  "html.format.wrapAttributes": "auto",
+  "javascript.autoClosingTags": true,
+  "typescript.autoClosingTags": true,
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "files.trimTrailingWhitespace": true,
+  "editor.bracketPairColorization.enabled": true,
+  "html.completion.attributeDefaultValue": "singlequotes",
+  "volar.vueserver.petiteVue.processHtmlFile": true,
+  "volar.autoWrapParentheses": true,
+  "prettier.bracketSameLine": true,
+  "prettier.jsxSingleQuote": true,
+  "files.trimFinalNewlines": false,
+  "files.insertFinalNewline": true,
+  "volar.format.initialIndent": {
+    "css": false,
+    "html": true,
+    "javascript": false,
+    "typescript": false,
+    "scss": false
+  },
+}
