@@ -93,34 +93,4 @@ const model = ref(false);
 }
 ```
 
-## prettier
-默认情况下会强制参数,数组的每一项,链式调用全部都尽可能的在一行而且不能配置,但是这样不符合公司目前的风格.
-目前找到的办法是在行尾增加空注释,强制换行
-```typescript
-Promise.resolve() //
-    .then(() => {
-        return Promise.resolve();
-    })
-    .then(() => {
-        return Promise.resolve();
-    })
-    .catch(() => {
-        return Promise.resolve();
-    });
-const a = [
-    '1', //
-    '3',
-    '4',
-];
-function testa() {
-    return Date.now();
-}
-function testb() {
-    return Date.now();
-}
-function test(a: number, b: number) {}
-test(
-    testa(), //
-    testb()
-);
-```
+
