@@ -13,6 +13,7 @@ export default {};
 <style lang="scss" scoped>
 .app-main {
   height: calc(100% - #{$top-bar-height});
+  width:100vw;
   overflow: hidden;
 }
 </style>

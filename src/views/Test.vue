@@ -1,15 +1,3 @@
-<script lang="ts">
-export default {
-    name: 'Test',
-};
-</script>
-<script lang="ts" setup>
-import { SucButton, SucDatePicker } from '@suc/ui-components';
-import { SucMap, OlLayer, OlControl } from '@suc/gnet-monch';
-import { OlMap } from '@/utils/Map';
-
-const olMap = ref(new OlMap('test-map'));
-</script>
 <template>
     <div class="test-a">
         <suc-map
@@ -26,10 +14,32 @@ const olMap = ref(new OlMap('test-map'));
         </suc-map>
         <suc-date-picker style="width: 100px" />
         <suc-button type="primary">test</suc-button>
+
+        <p>{{data.name}}</p>
+        <p>{{data.number}}</p>
     </div>
 </template>
+<script lang="ts">
+export default {
+    name: 'Test',
+};
+</script>
+<script lang="ts" setup>
+import { SucButton, SucDatePicker } from '@suc/ui-components';
+import { SucMap, OlLayer, OlControl } from '@suc/gnet-monch';
+import { OlMap } from '@/utils/Map';
+const olMap = ref(new OlMap('test-map'));
+const  data =reactive ({
+    name: 'test',
+    number:1
+})
+
+</script>
+
 
 <style lang="scss" scoped>
 .test-a {
+    width:100%;
+    height:100%
 }
 </style>
