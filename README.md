@@ -33,7 +33,10 @@ $ nr serve
 ```sh
 $ nr build
 ```
+## elementUI和iview组件引入说明
 
+为了减少打包体积，该项目采用按需引入的方式引入UI组件,为了不用在每个组件中都写引入语句，将
+引入的代码写在了src/uiComponent目录中，按需添加即可
 ## @suc/ui-components
 
 标准页组件库
