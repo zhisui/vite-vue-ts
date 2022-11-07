@@ -15,6 +15,11 @@ import { useInterceptors } from '@/utils/useInterceptors';
 import { PiniaVuePlugin } from 'pinia';
 import VueRouter from 'vue-router';
 
+import { initDomToCode } from 'dom-to-code'
+
+//只在开发环境初始化
+process.env.NODE_ENV === 'development' && initDomToCode()
+
 Vue.config.productionTip = false;
 
 Vue.config.errorHandler = (err, vm, info) => {

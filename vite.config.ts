@@ -12,7 +12,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import http2 from 'vite-plugin-http2';
 import mkcert from 'vite-plugin-mkcert';
-
+import { domToCodePlugin } from 'dom-to-code/vite'
 console.log('NODE_ENV: ' + process.env.NODE_ENV);
 export default defineConfig({
     base: './',
@@ -111,6 +111,8 @@ export default defineConfig({
         process.env.NODE_ENV !== 'production'
             ? mkcert()
             : null,
+            process.env.NODE_ENV !== 'production'? domToCodePlugin({mode: 'vue'})
+            : null
     ],
     build: {
         target: ['es2016', 'chrome79'],
