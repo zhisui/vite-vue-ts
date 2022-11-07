@@ -1,6 +1,6 @@
 <template>
     <div class="test-a">
-        <map
+        <suc-map
             ref="mapObject"
             style="width: 300px; height: 300px; position: relative"
             :options="olMap.map"
@@ -11,19 +11,14 @@
             </template>
             <!--基础底图-->
             <ol-layer :options="layer" :key="layer.name" v-for="layer in olMap.baseLayer"></ol-layer>
-        </map>
-        <Button type="info">Info</Button>
-        <el-button type="danger" plain disabled>危险按钮</el-button>
+        </suc-map>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { SucMap, OlLayer, OlControl } from '@suc/gnet-monch';
 import { OlMap } from '@/utils/Map';
-import {map} from '@/components'
-// import { Button } from 'iview';
 const olMap = ref(new OlMap('basemap'));
-const rate = ref(0)
 
 </script>
 

@@ -10,6 +10,7 @@ import checker from 'vite-plugin-checker';
 import PrintUrlsPlugin from 'vite-plugin-print-urls';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
+
 import http2 from 'vite-plugin-http2';
 import mkcert from 'vite-plugin-mkcert';
 import { domToCodePlugin } from 'dom-to-code/vite'
@@ -89,7 +90,7 @@ export default defineConfig({
             ],
         }),
         Components({
-            resolvers: [],
+
         }),
         process.env.NODE_ENV !== 'production'
             ? http2({

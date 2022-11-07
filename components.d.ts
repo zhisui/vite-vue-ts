@@ -5,7 +5,14 @@ export {}
         
 declare module 'vue' {
   export interface GlobalComponents {
+    App: typeof import('./src/App.vue')['default']
+    AppMain: typeof import('./src/layout/components/AppMain.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    Main: typeof import('./src/layout/Main.vue')['default']
+    Map: typeof import('./src/components/map.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Test: typeof import('./src/views/Test.vue')['default']
+    TopBar: typeof import('./src/layout/components/TopBar.vue')['default']
   }
 }

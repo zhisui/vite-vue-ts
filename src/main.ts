@@ -14,12 +14,14 @@ import http from './utils/http';
 import { useInterceptors } from '@/utils/useInterceptors';
 import { PiniaVuePlugin } from 'pinia';
 import VueRouter from 'vue-router';
-
+import 'iview/dist/styles/iview.css'
+import 'element-ui/lib/theme-chalk/index.css'
+import element from './uiComponent/element'
+import iview from './uiComponent/iview'
 import { initDomToCode } from 'dom-to-code'
 
 //只在开发环境初始化
 process.env.NODE_ENV === 'development' && initDomToCode()
-
 Vue.config.productionTip = false;
 
 Vue.config.errorHandler = (err, vm, info) => {
@@ -40,5 +42,9 @@ async function main() {
     useInterceptors(http, router, pinia);
     window.$app.mount('#app');
 }
+
+Vue.use(element)
+Vue.use(iview)
+
 
 main().catch(console.error);
