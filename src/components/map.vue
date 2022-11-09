@@ -18,13 +18,12 @@
 <script lang="ts" setup>
 import { SucMap, OlLayer, OlControl } from '@suc/gnet-monch';
 import { OlMap } from '@/utils/Map';
-const olMap = ref(new OlMap('basemap'));
+const olMap = ref(new OlMap('base'));
 
 </script>
 
 <style lang="scss" scoped>
 .test-a {
-    width: 100%;
-    height: 100%;
+
 }
 </style>

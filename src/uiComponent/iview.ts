@@ -1,4 +1,4 @@
-import { Button, Table, Select,Input } from 'iview';
+import { Button, Table, Select,Input,Icon,Modal } from 'iview';
 const iview = {
     install: function (Vue:any) {
         Vue.component('Button', Button);
@@ -6,6 +6,8 @@ const iview = {
         Vue.component('Select', Select);
         Vue.component('Option', Option);
         Vue.component('Input', Input);
+        Vue.component('Icon', Icon);
+        Vue.component('Modal', Modal);
     },
 }
 export default iview

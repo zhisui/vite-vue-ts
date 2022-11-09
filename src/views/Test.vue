@@ -1,35 +1,35 @@
 <template>
-    <div class="test-a">
-        <map
-            ref="mapObject"
-            style="width: 300px; height: 300px; position: relative"
-            :options="olMap.map"
-            v-bind.sync="olMap.view">
-            <!--控件-->
-            <template v-for="(item, index) in olMap.controls">
-                <ol-control :key="index" :name="item.name" :config="item.config"></ol-control>
-            </template>
-            <!--基础底图-->
-            <ol-layer :options="layer" :key="layer.name" v-for="layer in olMap.baseLayer"></ol-layer>
-        </map>
-        <Button type="info">Info</Button>
+    <div >
+        <map />
+        <Button type="info" @click='click'>Info</Button>
         <el-button type="danger" plain disabled>危险按钮</el-button>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { SucMap, OlLayer, OlControl } from '@suc/gnet-monch';
+
 import { OlMap } from '@/utils/Map';
 import {map} from '@/components'
+import {Message} from 'iview'
+import { testApi } from '@/api/test';
+import dayjs from 'dayjs';
 // import { Button } from 'iview';
-const olMap = ref(new OlMap('basemap'));
 const rate = ref(0)
+const getData = async () => {
+    const params = {
+        time:dayjs().format("YYYY-MM")
+    }
+    const res = await testApi(params)
+    console.log(res.datas[0],'res')
+}
+getData()
+const click = () => {
+    // // @ts-ignore
+    // Message.error('hello')
+}
 
 </script>
 
 <style lang="scss" scoped>
-.test-a {
-    width: 100%;
-    height: 100%;
-}
+
 </style>

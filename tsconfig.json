@@ -33,8 +33,7 @@
         "node_modules/@types/ol/*"
       ]
     },
-    "types": [
-    ]
+    "types": []
   },
   "include": [
     "src/**/*.ts",

@@ -13,7 +13,7 @@ import Components from 'unplugin-vue-components/vite';
 
 import http2 from 'vite-plugin-http2';
 import mkcert from 'vite-plugin-mkcert';
-import { domToCodePlugin } from 'dom-to-code/vite'
+import { domToCodePlugin } from 'dom-to-code/vite';
 console.log('NODE_ENV: ' + process.env.NODE_ENV);
 export default defineConfig({
     base: './',
@@ -112,7 +112,7 @@ export default defineConfig({
         process.env.NODE_ENV !== 'production'
             ? mkcert()
             : null,
-            process.env.NODE_ENV !== 'production'? domToCodePlugin({mode: 'vue'})
+        process.env.NODE_ENV !== 'production' ? domToCodePlugin({ mode: 'vue' })
             : null
     ],
     build: {
@@ -150,7 +150,14 @@ export default defineConfig({
         },
     },
     server: {
-        host: '0.0.0.0',
-        https: true,
+        proxy: {
+            // 接口地址代理
+            '/api': {
+                target:'https://kqszlw.kq.gov.cn:10443',//线上
+                // target:'http://172.18.9.60:31548',//张颖本地
+                changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
+                rewrite: path => path.replace(/^\/api/, '')
+            },
+        }
     },
 });
