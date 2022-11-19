@@ -92,26 +92,26 @@ export default defineConfig({
         Components({
 
         }),
-        process.env.NODE_ENV !== 'production'
-            ? http2({
-                proxy: {
-                    // 创建正则表达式的字符串，这里识别需要代理的接口
-                    '^/api': {
-                        // 需要代理的服务的ip
-                        hostname: '172.18.9.60',
-                        // 需要代理的服务的端口
-                        port: 31906,
-                        // async onReq(req, options) {
-                        //     // 如果路径需要修改，可以在这里修改添加
-                        //     options.path = options.path;
-                        // },
-                    },
-                },
-            })
-            : null,
-        process.env.NODE_ENV !== 'production'
-            ? mkcert()
-            : null,
+        // process.env.NODE_ENV !== 'production'
+        //     ? http2({
+        //         proxy: {
+        //             // 创建正则表达式的字符串，这里识别需要代理的接口
+        //             '^/api': {
+        //                 // 需要代理的服务的ip
+        //                 hostname: '172.18.9.60',
+        //                 // 需要代理的服务的端口
+        //                 port: 31906,
+        //                 // async onReq(req, options) {
+        //                 //     // 如果路径需要修改，可以在这里修改添加
+        //                 //     options.path = options.path;
+        //                 // },
+        //             },
+        //         },
+        //     })
+        //     : null,
+        // process.env.NODE_ENV !== 'production'
+        //     ? mkcert()
+        //     : null,
         process.env.NODE_ENV !== 'production' ? domToCodePlugin({ mode: 'vue' })
             : null
     ],
