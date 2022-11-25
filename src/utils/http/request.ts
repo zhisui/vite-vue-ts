@@ -2,9 +2,14 @@ import { IResponse } from '@/types/request';
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { showMessage } from './status';
 
-
-const baseURL = 'https://kqszlw.kq.gov.cn:10443/api/kqszlw';
-
+let baseURL = import.meta.env.VITE_APP_BASE
+// let baseURL
+// console.log(import.meta.env.MODE ,'import.meta.env.ENV')
+// if (import.meta.env.MODE=== 'development') {
+//     baseURL = 'https://kqszlw.kq.gov.cn:10443/api/kqszlw'
+// } else {
+//     baseURL = 'https://kqszlw.kq.gov.cn:10443/kqszlw'
+// }
 // 自定义axios实例
 const instance: AxiosInstance = axios.create({
     baseURL,

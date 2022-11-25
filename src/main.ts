@@ -17,7 +17,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import element from './uiComponent/element'
 import iview from './uiComponent/iview'
 import { initDomToCode } from 'dom-to-code'
+import "amfe-flexible/index.js";
 import {Message} from 'iview';
+import '@/utils/rem'
 Vue.prototype.$Message = Message;
 //只在开发环境初始化
 process.env.NODE_ENV === 'development' && initDomToCode()
