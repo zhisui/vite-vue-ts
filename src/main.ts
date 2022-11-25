@@ -20,6 +20,9 @@ import { initDomToCode } from 'dom-to-code'
 import "amfe-flexible/index.js";
 import {Message} from 'iview';
 import '@/utils/rem'
+import "echarts";
+import ECharts from 'vue-echarts'
+
 Vue.prototype.$Message = Message;
 //只在开发环境初始化
 process.env.NODE_ENV === 'development' && initDomToCode()
@@ -44,6 +47,7 @@ async function main() {
 }
 
 Vue.use(element)
+Vue.component('v-chart', ECharts)
 Vue.use(iview)
 
 main().catch(console.error);

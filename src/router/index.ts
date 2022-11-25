@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 export default new Router({
+    mode:'history',
     routes: [
         {
             path: '',
@@ -10,12 +11,12 @@ export default new Router({
         { //懒加载
             path: '/main',
             redirect: { name: 'test' },
-            component: () => import('../layout/Main.vue'),
+            component: () => import('@/layout/Main.vue'),
             children: [
                 {
                     name: 'test',
                     path: 'test',
-                    component: () => import('../views/Test.vue'),
+                    component: () => import('@/views/Test.vue'),
                 },
             ],
         },

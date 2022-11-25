@@ -13,7 +13,6 @@ let baseURL = import.meta.env.VITE_APP_BASE
 // 自定义axios实例
 const instance: AxiosInstance = axios.create({
     baseURL,
-    timeout: 15000, //如果请求话费了超过 `timeout` 的时间，请求将被中断
     withCredentials: true, // 许跨域设置，不然可能因为拿不到cookie而报错
 });
 
