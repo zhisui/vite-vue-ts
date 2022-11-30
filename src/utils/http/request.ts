@@ -2,7 +2,7 @@ import { IResponse } from '@/types/request';
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { showMessage } from './status';
 
-let baseURL = import.meta.env.VITE_APP_BASE
+let baseURL = "https://kqszlw.kq.gov.cn:10443/api/kqszlw"
 // let baseURL
 // console.log(import.meta.env.MODE ,'import.meta.env.ENV')
 // if (import.meta.env.MODE=== 'development') {

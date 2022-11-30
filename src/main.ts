@@ -12,18 +12,20 @@ import { h, createApp } from 'vue-demi';
 import { prepareApp } from '@/utils/prepareApp';
 import { PiniaVuePlugin } from 'pinia';
 import VueRouter from 'vue-router';
+
 import 'iview/dist/styles/iview.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import element from './uiComponent/element'
 import iview from './uiComponent/iview'
+import { Message } from 'iview'
+
+
 import { initDomToCode } from 'dom-to-code'
 import "amfe-flexible/index.js";
-import {Message} from 'iview';
 import '@/utils/rem'
 import "echarts";
 import ECharts from 'vue-echarts'
 
-Vue.prototype.$Message = Message;
 //只在开发环境初始化
 process.env.NODE_ENV === 'development' && initDomToCode()
 Vue.config.productionTip = false;
@@ -48,6 +50,7 @@ async function main() {
 
 Vue.use(element)
 Vue.component('v-chart', ECharts)
+
 Vue.use(iview)
 
 main().catch(console.error);

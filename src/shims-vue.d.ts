@@ -4,3 +4,4 @@ declare module 'vue/types/vue' {
 
     }
 }
+declare module 'iview'
