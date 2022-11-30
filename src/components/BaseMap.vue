@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import { SucMap, OlLayer, OlControl } from '@suc/gnet-monch';
 import { OlMap } from '@/utils/Map';
-const olMap = ref(new OlMap('base'));
+const olMap = ref(new OlMap('baseMap'));
 
 </script>
 

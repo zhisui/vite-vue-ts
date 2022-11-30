@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <map ></map>
+        <BaseMap />
         <Button type="info" @click="click">Info</Button>
         <el-button type="danger" plain disabled>危险按钮</el-button>
         <div style="width: 50vw; height: 50vh">
@@ -60,8 +60,6 @@ var option = {
                 textShadowOffsetY: 1,
             },
         },
-
-
     ],
     series: [
         {

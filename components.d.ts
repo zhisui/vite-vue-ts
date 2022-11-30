@@ -5,6 +5,7 @@ export {}
         
 declare module 'vue' {
   export interface GlobalComponents {
+    BaseMap: typeof import('./src/components/BaseMap.vue')['default']
     Map: typeof import('./src/components/map.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

@@ -1,4 +1,4 @@
 
-export {default as map } from './map.vue'
+export {default as map } from './BaseMap.vue'
 
 
