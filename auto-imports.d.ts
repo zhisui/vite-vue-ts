@@ -54,3 +54,5 @@ declare global {
   const watchPostEffect: typeof import('vue-demi')['watchPostEffect']
   const watchSyncEffect: typeof import('vue-demi')['watchSyncEffect']
 }
+declare module 'echarts-gl/charts'
+declare module 'echarts-gl/components'

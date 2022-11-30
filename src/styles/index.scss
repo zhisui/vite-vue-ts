@@ -2,6 +2,9 @@ html {
   box-sizing: border-box;
 
 }
+body {
+  color:#fff !important;
+}
 *,
 *::before,
 *::after {
@@ -17,6 +20,10 @@ html {
   --yellow-color: #dfcc17;
   --green-color:#46ffc0;
 
+}
+
+li {
+  list-style-type: none;
 }
 
 #app {

@@ -11,7 +11,7 @@ export default new Router({
         { //懒加载
             path: '/main',
             redirect: { name: 'test' },
-            component: () => import('@/layout/Main.vue'),
+            component: () => import('../layout/Main.vue'),
             children: [
                 {
                     name: 'test',

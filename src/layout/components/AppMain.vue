@@ -12,7 +12,7 @@ export default {};
 </script>
 <style lang="scss" scoped>
 .app-main {
-  height: calc(100% - #{$top-bar-height});
+  height: calc(100% - #{$top-bar-height + $bottom-bar-height});
   width:100vw;
   overflow: hidden;
 }

@@ -1,24 +1,22 @@
 <template>
     <div class="main-view">
-        <top-bar/>
-        <app-main/>
+        <TopBar/>
+        <AppMain/>
+        <BottomBar/>
     </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import BottomBar from './components/BottomBar.vue';
 import AppMain from './components/AppMain.vue';
 import TopBar from './components/TopBar.vue';
-
-export default {
-    components: {
-        TopBar,
-        AppMain,
-    },
-};
 </script>
 <style lang="scss" scoped>
 .main-view {
   height: 100%;
   overflow: hidden;
+  position: relative;
+  background-color: #0A1C33;
+
 }
 </style>
