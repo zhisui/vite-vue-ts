@@ -11,7 +11,6 @@
 </template>
 
 <script lang="ts" setup>
-import { map } from '@/components';
 import { Message } from 'iview';
 import { testApi } from '@/api/test';
 import 'echarts-liquidfill'
