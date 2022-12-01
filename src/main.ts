@@ -13,7 +13,7 @@ import { prepareApp } from '@/utils/prepareApp';
 import { PiniaVuePlugin } from 'pinia';
 import plugin from './utils/plugin';
 import VueRouter from 'vue-router';
-// import '@/directives'
+import './styles/index.scss'
 
 import 'iview/dist/styles/iview.css'
 import 'element-ui/lib/theme-chalk/index.css'

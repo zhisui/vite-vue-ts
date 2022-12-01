@@ -1,3 +1,4 @@
+// @import "../styles/mixin.scss";
 html {
   box-sizing: border-box;
 
@@ -14,7 +15,7 @@ body {
 }
 
 :root {
-  --blue-clolr:#00f7ff;
+  --blue-color:#00f7ff;
   --red-color:#fa5b5b;
   --orange-color :#e58513;
   --yellow-color: #dfcc17;
