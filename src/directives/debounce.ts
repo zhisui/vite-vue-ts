@@ -4,7 +4,7 @@ const debounce = {
         let timer: any = null;
         let immediate: boolean = true;
         el.addEventListener('click', () => {
-            if (!binding.value) {
+           if (!binding.value) {
                 if (el.disabled) return;
                 el.disabled = true;
                 el.style.cursor = 'not-allowed';

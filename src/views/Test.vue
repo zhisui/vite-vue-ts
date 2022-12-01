@@ -5,8 +5,10 @@
         <el-button type="danger" plain disabled>危险按钮</el-button>
         <div style="width: 50vw; height: 50vh">
             <v-chart :option="option" autoresize :loading="false" />
-            <Button @click="updateData">更新数据</Button>
+            <Button @click="updateData" v-focus>测试按钮</Button>
+            <input type='text' v-focus/>
         </div>
+        <TestFilter />
     </div>
 </template>
 
@@ -15,8 +17,9 @@ import { Message } from 'iview';
 import { testApi } from '@/api/test';
 import 'echarts-liquidfill'
 import 'echarts-gl'
-
+import TestFilter from './TestFilter.vue'
 import dayjs from 'dayjs';
+// import dateFormat from '@/directives/dateFormat';
 const rate = ref(0);
 const getData = async () => {
     const params = {

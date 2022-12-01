@@ -1,14 +1,14 @@
 <template>
     <div class="bottom-bar">
         <ul>
-            <router-link to="/main/importMng/gas" :class="{'router-link-active': ['gas','dustRoad','dustBuilding','dustPollute','dustControl'].includes(route?.name as string)}">
+            <router-link to="/main/importMng/gas" :class="{'router-link-active': isActiveRoute}">
                 <li>
                     <span>大气</span>
                 </li>
             </router-link>
             <a>
                 <li>
-                    <span>水</span>
+                    <span>水 </span>
                 </li>
             </a>
             <a>
@@ -43,6 +43,12 @@
 <script lang='ts' setup>
 
 const route = useRoute()
+
+const isActiveRoute = () => {
+ const  routeArr = ['gas','dustRoad','dustBuilding','dustPollute','dustControl']
+ const routeName = route.name || ''
+return routeArr.includes(routeName)
+}
 
 </script>
 

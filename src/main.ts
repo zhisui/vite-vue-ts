@@ -11,15 +11,15 @@ import router from './router';
 import { h, createApp } from 'vue-demi';
 import { prepareApp } from '@/utils/prepareApp';
 import { PiniaVuePlugin } from 'pinia';
+import plugin from './utils/plugin';
 import VueRouter from 'vue-router';
+// import '@/directives'
 
 import 'iview/dist/styles/iview.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import element from './uiComponent/element'
 import iview from './uiComponent/iview'
 import { Message } from 'iview'
-
-
 import { initDomToCode } from 'dom-to-code'
 import "amfe-flexible/index.js";
 import '@/utils/rem'
@@ -36,6 +36,10 @@ Vue.config.errorHandler = (err, vm, info) => {
     });
 };
 
+Vue.filter('filterName', (val:any)=>{
+    console.log(val,'val')
+    return val
+})
 async function main() {
     await prepareApp();
     window.$app = createApp({
@@ -50,7 +54,6 @@ async function main() {
 
 Vue.use(element)
 Vue.component('v-chart', ECharts)
-
 Vue.use(iview)
-
+Vue.use(plugin)
 main().catch(console.error);

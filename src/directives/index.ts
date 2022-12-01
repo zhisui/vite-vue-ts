@@ -13,7 +13,7 @@ export default {
         Object.keys(directives).forEach((name: string) => {
             Vue.directive(name, directives[name]);
         });
-        Vue.filter('dateFormat', dateFormat);
+        Vue.filter('dateFormat', dateFormat); //filter只能在vue2的选项式api里可以调用，vue3的组合式Api不能用
     },
 } as { install: PluginFunction<any> };
 
