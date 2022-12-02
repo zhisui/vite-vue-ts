@@ -1,6 +1,7 @@
 <template>
-    <div class="container">
-        <BaseMap />
+
+        <div class="container">
+        <!-- <BaseMap />
         <Button type="info" @click="click">Info</Button>
         <el-button type="danger" plain disabled>危险按钮</el-button>
         <div style="width: 50vw; height: 50vh">
@@ -8,8 +9,12 @@
             <Button @click="updateData" v-focus>测试按钮</Button>
             <input type='text' v-focus/>
         </div>
-        <TestFilter />
+        <TestFilter /> -->
+        <div style="margin-top:20px">
+            <ScrollPicker />
+        </div>
     </div>
+
 </template>
 
 <script lang="ts" setup>
@@ -17,6 +22,7 @@ import { Message } from 'iview';
 import { testApi } from '@/api/test';
 import 'echarts-liquidfill'
 import 'echarts-gl'
+import ScrollPicker from '@/components/ScrollPicker/ScrollPicker.vue';
 import TestFilter from './TestFilter.vue'
 import dayjs from 'dayjs';
 // import dateFormat from '@/directives/dateFormat';
@@ -205,8 +211,7 @@ const click = () => {
 
 <style lang="scss" scoped>
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color:#000;
+
 }
 </style>

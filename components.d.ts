@@ -9,5 +9,6 @@ declare module 'vue' {
     Map: typeof import('./src/components/BaseMap.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ScrollPicker: typeof import('./src/components/ScrollPicker/ScrollPicker.vue')['default']
   }
 }
