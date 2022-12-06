@@ -43,11 +43,11 @@
                         <span>一码智管服</span>
                     </li>
                 </router-link>
-                <!-- <router-link to="/cooperation/dust" v-authox="'ypgzd|access'"> -->
+                <router-link to="/cooperation/dust" v-authox="'ypgzd|access'">
                     <li>
                         <span v-debounce>协同管控中心</span>
                     </li>
-                <!-- </router-link> -->
+                </router-link>
             </ul>
             <div>
                 <!--                <div class="img-btn" @click="$router.push('/main/authox/user')">-->

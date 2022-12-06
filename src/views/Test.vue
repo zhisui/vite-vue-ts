@@ -1,7 +1,7 @@
 <template>
 
         <div class="container">
-        <!-- <BaseMap />
+        <BaseMap />
         <Button type="info" @click="click">Info</Button>
         <el-button type="danger" plain disabled>危险按钮</el-button>
         <div style="width: 50vw; height: 50vh">
@@ -9,10 +9,7 @@
             <Button @click="updateData" v-focus>测试按钮</Button>
             <input type='text' v-focus/>
         </div>
-        <TestFilter /> -->
-        <div style="margin-top:20px">
-            <ScrollPicker />
-        </div>
+        <TestFilter />
     </div>
 
 </template>
@@ -211,6 +208,8 @@ const click = () => {
 
 <style lang="scss" scoped>
 .container {
+    height: 100%;
+    width: 100%;
     color:#000;
 
 }

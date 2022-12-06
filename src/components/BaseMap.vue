@@ -1,8 +1,7 @@
 <template>
-    <div class="test-a">
+    <div class="map">
         <suc-map
             ref="mapObject"
-            style="width: 300px; height: 300px; position: relative"
             :options="olMap.map"
             v-bind.sync="olMap.view">
             <!--控件-->
@@ -10,7 +9,7 @@
                 <ol-control :key="index" :name="item.name" :config="item.config"></ol-control>
             </template>
             <!--基础底图-->
-            <ol-layer :options="layer" :key="layer.name" v-for="layer in olMap.baseLayer"></ol-layer>
+            <ol-layer :options="layer" :key="layer.name" v-for="layer in olMap.baseLayer" v-if="layer.source.visible" ></ol-layer>
         </suc-map>
     </div>
 </template>
@@ -19,11 +18,11 @@
 import { SucMap, OlLayer, OlControl } from '@suc/gnet-monch';
 import { OlMap } from '@/utils/Map';
 const olMap = ref(new OlMap('baseMap'));
-
 </script>
-
 <style lang="scss" scoped>
-.test-a {
-
+.map {
+    height: 100%;
+    width: 100%;
+    position: relative;
 }
 </style>

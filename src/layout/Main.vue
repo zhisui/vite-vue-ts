@@ -16,7 +16,6 @@ import TopBar from './components/TopBar.vue';
   height: 100%;
   overflow: hidden;
   position: relative;
-//   background-color: #0A1C33;
-
+  background-color: #0A1C33;
 }
 </style>

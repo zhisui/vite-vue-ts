@@ -312,6 +312,17 @@ export default defineComponent({
     position: fixed;
     top: 0;
     left: 0;
+    animation-name: slideInUp;
+}
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 .noselect {
     -webkit-touch-callout: none;
