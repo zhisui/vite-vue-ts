@@ -23,6 +23,5 @@ const olMap = ref(new OlMap('baseMap'));
 .map {
     height: 100%;
     width: 100%;
-    position: relative;
 }
 </style>

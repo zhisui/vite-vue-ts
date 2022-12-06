@@ -1,5 +1,5 @@
 <template>
-    <div class="main-view">
+    <div class="view">
         <TopBar/>
         <AppMain/>
         <BottomBar/>
@@ -12,7 +12,7 @@ import AppMain from './components/AppMain.vue';
 import TopBar from './components/TopBar.vue';
 </script>
 <style lang="scss" scoped>
-.main-view {
+.view {
   height: 100%;
   overflow: hidden;
   position: relative;

@@ -6,7 +6,9 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BaseMap: typeof import('./src/components/BaseMap.vue')['default']
-    Map: typeof import('./src/components/BaseMap.vue')['default']
+    LayerTree: typeof import('./src/components/LayerTree.vue')['default']
+    Map: typeof import('./src/components/Map.vue')['default']
+    PanelView: typeof import('./src/components/PanelView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ScrollPicker: typeof import('./src/components/ScrollPicker/ScrollPicker.vue')['default']

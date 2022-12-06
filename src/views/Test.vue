@@ -1,26 +1,28 @@
 <template>
-
-        <div class="container">
-        <BaseMap />
-        <Button type="info" @click="click">Info</Button>
-        <el-button type="danger" plain disabled>危险按钮</el-button>
-        <div style="width: 50vw; height: 50vh">
-            <v-chart :option="option" autoresize :loading="false" />
-            <Button @click="updateData" v-focus>测试按钮</Button>
-            <input type='text' v-focus/>
+    <div class="container">
+        <Map />
+        <div class="main-view">
+            <div class="left">
+                <div class="left-item">1</div>
+                <div class="left-item">2</div>
+                <div class="left-item">3</div>
+            </div>
+            <div class="center"></div>
+            <div class="right">
+                <div class="right-item">1</div>
+            </div>
         </div>
-        <TestFilter />
     </div>
-
 </template>
 
 <script lang="ts" setup>
 import { Message } from 'iview';
 import { testApi } from '@/api/test';
-import 'echarts-liquidfill'
-import 'echarts-gl'
+import 'echarts-liquidfill';
+import 'echarts-gl';
 import ScrollPicker from '@/components/ScrollPicker/ScrollPicker.vue';
-import TestFilter from './TestFilter.vue'
+import TestFilter from './TestFilter.vue';
+import { Map } from '@/components';
 import dayjs from 'dayjs';
 // import dateFormat from '@/directives/dateFormat';
 const rate = ref(0);
@@ -28,8 +30,8 @@ const getData = async () => {
     const params = {
         time: dayjs().format('YYYY-MM'),
     };
-    const res = await testApi(params)
-    console.log(res.datas[0],'res')
+    const res = await testApi(params);
+    console.log(res.datas[0], 'res');
 };
 
 var value = 0.5;
@@ -39,15 +41,21 @@ const option = {
     xAxis3D: {},
     yAxis3D: {},
     zAxis3D: {},
-    series: [{
-        type: 'scatter3D',
-        symbolSize: 50,
-        data: [[-1, -1, -1], [0, 0, 0], [1, 1, 1]],
-        itemStyle: {
-            opacity: 1
-        }
-    }]
-}
+    series: [
+        {
+            type: 'scatter3D',
+            symbolSize: 50,
+            data: [
+                [-1, -1, -1],
+                [0, 0, 0],
+                [1, 1, 1],
+            ],
+            itemStyle: {
+                opacity: 1,
+            },
+        },
+    ],
+};
 // var option = {
 //     title: [
 //         {
@@ -194,11 +202,7 @@ const option = {
 //     ],
 // };
 
-
-
-const updateData = () => {
-
-};
+const updateData = () => {};
 getData();
 const click = () => {
     // // @ts-ignore
@@ -210,7 +214,72 @@ const click = () => {
 .container {
     height: 100%;
     width: 100%;
-    color:#000;
+    position: relative;
+}
 
+.main-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 16px;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    .left {
+        width: 440px;
+        height: 100%;
+        pointer-events: auto;
+        display: flex;
+        flex-direction: column;
+        .left-item {
+            z-index: 999;
+            &:nth-of-type(1) {
+                height: 250px;
+                margin-bottom: 10px;
+                position: relative;
+            }
+            &:nth-of-type(2) {
+                height: 240px;
+                margin-bottom: 10px;
+                position: relative;
+            }
+
+            &:last-of-type {
+                flex: 1;
+                overflow: auto;
+                position: relative;
+                z-index: 0;
+            }
+        }
+    }
+
+    .center {
+        position: relative;
+        padding: 0 16px;
+        width: calc(100% - 880px);
+        height: 100%;
+        .tab {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #fff;
+            pointer-events: auto;
+        }
+    }
+
+    .right {
+        width: 440px;
+        height: 100%;
+        pointer-events: auto;
+        .right-item {
+            &:first-of-type {
+                height: 100%;
+            }
+        }
+    }
 }
 </style>
