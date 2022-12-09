@@ -33,7 +33,7 @@
                             @change="changeTime(month)">
                         </el-date-picker>
                     </template>
-                    <template v-if="isYear">
+                    <template v-if="props.isYear">
                         <el-date-picker
                             v-model="year"
                             type="year"

@@ -1,50 +1,50 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "importHelpers": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "allowJs": true,
-    "emitDecoratorMetadata": true,
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "stripInternal": true,
-    "strictPropertyInitialization": false,
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "ol": [
-        "node_modules/@types/ol"
-      ],
-      "ol/*": [
-        "node_modules/@types/ol/*"
-      ]
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "strict": true,
+        "jsx": "preserve",
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "importHelpers": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        "emitDecoratorMetadata": true,
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "stripInternal": true,
+        "strictPropertyInitialization": false,
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ],
+            "ol": [
+                "node_modules/@types/ol"
+            ],
+            "ol/*": [
+                "node_modules/@types/ol/*"
+            ]
+        },
+        "types": []
     },
-    "types": []
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "components.d.ts",
-    "auto-imports.d.ts",
-  ],
-  "exclude": [],
-  "vueCompilerOptions": {
-    "target": 2.7
-  }
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "components.d.ts",
+        "auto-imports.d.ts",
+    ],
+    "exclude": [],
+    "vueCompilerOptions": {
+        "target": 2.7
+    }
 }
