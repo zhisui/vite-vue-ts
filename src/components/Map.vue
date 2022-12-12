@@ -1,10 +1,10 @@
 <template>
     <div class="map-container">
-        <BaseMap :mapPoints='pointsCollect'/>
+        <BaseMap :mapPoints='mapPoints'/>
         <div class="center">
             <!-- 地图右侧环保图层筛选框-->
             <div class="layertree">
-                <LayerTree ref="layerTree" @navCheckChange="navCheckChange" @getCheckedNodes ='getInitPoints'/>
+                <LayerTree ref="layerTree" @layerChange="layerChange" />
             </div>
         </div>
     </div>
@@ -12,38 +12,48 @@
 
 <script setup lang="ts">
 import NodeReturn from '@/types/common';
-import {useMapPoints} from '../utils/useMapPoints';
+import {getGasPoints} from '@/utils/getPoints'
+
 
 const layerTree = ref()
-const pointsCollect = ref({
-    polluteGas:{
-        points:[],
-        show:false,
+const mapPoints = reactive({
+    polluteGas: {
+        points: [],
+        show: false,
     },
-    polluteWater:{
-        points:[],
-        show:false,
+    polluteWater: {
+        points: [],
+        show: false,
     },
-
-})
+});
 onMounted(() => {
 
 })
 
 // 图层节点点击显示点位
-const navCheckChange = async(currentCheck:NodeReturn) => {
-    const {mapPoints} = useMapPoints(currentCheck)
-    pointsCollect.value = mapPoints
+const layerChange = async(current:NodeReturn | NodeReturn[]) => {
+    console.log(current,'currentCheck是什麽')
+    if (Array.isArray(current)) { //初始渲染时调用
+        for (let i=0; i<current.length; i++) {
+            changeSingleCheck(current[i])
+        }
+    } else {//节点切换时调用
+        changeSingleCheck(current)
+    }
 };
 
-//跳转到相应页面初始显示点位
-const getInitPoints = (nodes:NodeReturn[]) => {
-    console.log(nodes,'nodes是什么')
-    const {mapPoints} = useMapPoints(nodes)
-    pointsCollect.value = mapPoints
-}
-
-
+const changeSingleCheck = async (currentNode: NodeReturn) => {
+    switch (currentNode.title) {
+        case '废气': {
+            if (currentNode.checked) {
+                mapPoints.polluteGas.points = await getGasPoints();
+                mapPoints.polluteGas.show = true;
+            } else {
+                mapPoints.polluteGas.show = false;
+            }
+        }
+    }
+};
 
 </script>
 

@@ -14,8 +14,8 @@
 
             <!-- 尾矿库 -->
             <template>
-                <ol-markers v-if="props.mapPoints.polluteGas.show" :zIndex="100">
-                    <template v-for="(point, id) in props.mapPoints.polluteGas.points">
+                <ol-markers v-if="polluteGas.show" :zIndex="100">
+                    <template v-for="(point, id) in polluteGas.points">
                         <ol-marker
                             :options="point"
                             @singleclick="markerClick(point)"
@@ -39,8 +39,7 @@ const props = defineProps<{
         polluteWater: PointsType;
     };
 }>();
-
-console.log(props,'props')
+const {polluteGas,polluteWater} = props.mapPoints
 
 const markerClick = (point: any) => {
 };

@@ -1,3 +1,6 @@
+
+
+
 export const nav = [
     {//0
         title: "e企管企业",
@@ -39,12 +42,11 @@ export const nav = [
         children: [
             {
                 title: '废水',
-                checked: false,
+                checked: true,
             },
             {
                 title: '废气',
                 checked: true,
-                function: 'getGasPoints'
             },
             {
                 title: '固废',

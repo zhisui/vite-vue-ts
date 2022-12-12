@@ -6,7 +6,7 @@ window.mapConfig = {
     },
     view: {
         center: { coord: [120.55450697326916, 29.98121702454103], },
-        zoom: 10.8,
+        zoom: 10.6,
         maxZoom: 15,
         minZoom: 8,
     },

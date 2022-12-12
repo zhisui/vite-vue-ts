@@ -18,7 +18,7 @@
 import { nav } from '@/constant/nav';
 import CheckChangeReturn from '@/types/common'
 
-const emit = defineEmits(['navCheckChange','getCheckedNodes'])
+const emit = defineEmits(['layerChange'])
 const isExpand = ref(false);
 const tree = ref();
 
@@ -27,15 +27,14 @@ onMounted(() => {
 });
 
 const handleCheckChange = (allNode:CheckChangeReturn[],currentNode:CheckChangeReturn) => {
-    emit('navCheckChange',currentNode)
+    emit('layerChange',currentNode)
 };
 
 const getCheckedNodes = () => {
     let nodes;
     if (tree.value) {
-        nodes = tree.value?.getCheckedNodes();
-        console.log(nodes, 'nodes');
-        emit('getCheckedNodes',nodes)
+        nodes = tree.value?.getCheckedNodes(); //获取所有已选择节点
+        emit('layerChange',nodes)
     }
 }
 </script>
