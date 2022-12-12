@@ -9,34 +9,88 @@
         </div>
 
         <div class="tree-box" v-show="isExpand">
-            <Tree ref="tree" :data="nav" show-checkbox @on-check-change="handleCheckChange" />
+            <Tree ref="tree" :data="nav" show-checkbox @on-check-change="handleNodeChange" />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { nav } from '@/constant/nav';
-import CheckChangeReturn from '@/types/common'
+import CheckChangeReturn from '@/types/common';
 
-const emit = defineEmits(['layerChange'])
+const props = withDefaults(
+    defineProps<{
+        type?: string;
+    }>(),
+    {
+        type: '',
+    }
+);
+const emit = defineEmits(['layerChange']);
 const isExpand = ref(false);
 const tree = ref();
 
 onMounted(() => {
-    getCheckedNodes()
+    initLayers();
+    getCheckedNodes();
 });
 
-const handleCheckChange = (allNode:CheckChangeReturn[],currentNode:CheckChangeReturn) => {
-    emit('layerChange',currentNode)
+const handleNodeChange = (allNode: CheckChangeReturn[], currentNode: CheckChangeReturn) => {
+    emit('layerChange', currentNode);
 };
 
 const getCheckedNodes = () => {
     let nodes;
     if (tree.value) {
         nodes = tree.value?.getCheckedNodes(); //获取所有已选择节点
-        emit('layerChange',nodes)
+        emit('layerChange', nodes);
     }
-}
+};
+
+const changeCheck = (checked: boolean, title: string) => {
+    nav.forEach((item) => {
+        if (item.title === title) {
+            if (item.hasOwnProperty('expand')) {
+                item.expand = checked;
+            }
+            item.checked = checked;
+            if (item.children && item.children.length > 0) {
+                changeCheck(checked, item.children as any);
+            }
+        }
+    });
+};
+
+const checkNav = (status:boolean, titlesArr: string[]) => {
+    titlesArr.forEach((title) => {
+        if (JSON.stringify(nav).includes(title)) {
+            changeCheck(status, title);
+        }
+    });
+};
+
+const getAllNavTitles = (navList: typeof nav) => {
+    let titleArr: string[] = [];
+    navList.forEach((item) => {
+        if (item.title) {
+            titleArr.push(item.title);
+        }
+        if (item.children) {
+            getAllNavTitles(item.children as any);
+        }
+    });
+    return titleArr;
+};
+
+const initLayers = () => {
+    // 初始时需将所有的结点重置为未选中状态，再根据typeList动态渲染
+    const navTitles = getAllNavTitles(nav)
+    checkNav(false, navTitles);
+    const typeList: any = {  //所需要的显示的点位
+        pollute: ['废气', '废水'],
+    };
+    checkNav(true,typeList[props.type]);
+};
 </script>
 
 <style scoped lang="scss">

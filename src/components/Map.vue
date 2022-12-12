@@ -1,10 +1,10 @@
 <template>
     <div class="map-container">
-        <BaseMap :mapPoints='mapPoints'/>
+        <BaseMap :mapPoints="mapPoints" />
         <div class="center">
             <!-- 地图右侧环保图层筛选框-->
             <div class="layertree">
-                <LayerTree ref="layerTree" @layerChange="layerChange" />
+                <LayerTree ref="layerTree" @layerChange="layerChange" :type="props.type" />
             </div>
         </div>
     </div>
@@ -12,10 +12,17 @@
 
 <script setup lang="ts">
 import NodeReturn from '@/types/common';
-import {getGasPoints} from '@/utils/getPoints'
+import { getGasPoints } from '@/utils/getPoints';
+const props = withDefaults(
+    defineProps<{
+        type?: string;
+    }>(),
+    {
+        type: '',
+    }
+);
 
-
-const layerTree = ref()
+const layerTree = ref();
 const mapPoints = reactive({
     polluteGas: {
         points: [],
@@ -26,19 +33,20 @@ const mapPoints = reactive({
         show: false,
     },
 });
-onMounted(() => {
 
-})
+onMounted(() => {});
 
 // 图层节点点击显示点位
-const layerChange = async(current:NodeReturn | NodeReturn[]) => {
-    console.log(current,'currentCheck是什麽')
-    if (Array.isArray(current)) { //初始渲染时调用
-        for (let i=0; i<current.length; i++) {
-            changeSingleCheck(current[i])
+const layerChange = async (current: NodeReturn | NodeReturn[]) => {
+    console.log(current, 'currentCheck是什麽');
+    if (Array.isArray(current)) {
+        //初始渲染时调用
+        for (let i = 0; i < current.length; i++) {
+            changeSingleCheck(current[i]);
         }
-    } else {//节点切换时调用
-        changeSingleCheck(current)
+    } else {
+        //节点切换时调用
+        changeSingleCheck(current);
     }
 };
 
@@ -54,7 +62,6 @@ const changeSingleCheck = async (currentNode: NodeReturn) => {
         }
     }
 };
-
 </script>
 
 <style lang="scss" scoped>

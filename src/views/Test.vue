@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <Map />
+        <Map type='pollute'/>
         <div class="main-view">
             <div class="left">
                 <div class="left-item">1</div>
