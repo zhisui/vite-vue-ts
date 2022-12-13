@@ -15,10 +15,9 @@
             <!-- 地图点位弹窗,-->
             <template v-if="mapState.mapOverlay?.show">
                 <ol-overlay :position="mapState.mapOverlay.position" :offset="[0, -20]" category="clickLabel">
-                    <component :is="TailingMap" :point="mapState.mapOverlay.info" />
+                    <component :is="typeComponentMap[mapState.mapOverlay.component]" :point="mapState.mapOverlay.info" />
                 </ol-overlay>
             </template>
-
             <!-- 地图闪烁点 -->
             <template v-if="mapState?.flashPoint?.show">
                 <ol-flash
@@ -59,9 +58,9 @@ const props = defineProps<{
         polluteWater: PointsType;
     };
 }>();
-// const typeComponentMap = {
-// 	'TailingMap':TailingMap
-// }
+const typeComponentMap:any = {
+	'TailingMap':TailingMap
+}
 const { polluteGas, polluteWater } = props.mapPoints;
 const mapState = mapStore();
 const markerClick = (data: typeof mapState.mapOverlay) => {
@@ -84,7 +83,6 @@ const markerClick = (data: typeof mapState.mapOverlay) => {
         component: info.popComponent,
         info: info,
     });
-    console.log(mapState, 'mapState');
 };
 </script>
 <style lang="scss" scoped>
