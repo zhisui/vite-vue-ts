@@ -6,7 +6,7 @@ import '@suc/chain';
 import Vue from 'vue';
 import App from './App.vue';
 // 注意pinia需要在router上面引入,或者必须保证pinia在vue-router之前vue.use
-import { pinia } from './stores';
+import { createPinia } from 'pinia'
 import router from './router';
 import { h, createApp } from 'vue-demi';
 import { prepareApp } from '@/utils/prepareApp';
@@ -25,6 +25,8 @@ import "amfe-flexible/index.js";
 import '@/utils/rem'
 import "echarts";
 import ECharts from 'vue-echarts'
+
+const pinia = createPinia()
 
 //只在开发环境初始化
 process.env.NODE_ENV === 'development' && initDomToCode()

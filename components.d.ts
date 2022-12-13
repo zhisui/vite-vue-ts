@@ -12,5 +12,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ScrollPicker: typeof import('./src/components/ScrollPicker/ScrollPicker.vue')['default']
+    TailingMap: typeof import('./src/components/mapOverlayer/TailingMap.vue')['default']
   }
 }

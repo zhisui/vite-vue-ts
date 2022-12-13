@@ -38,7 +38,6 @@ onMounted(() => {});
 
 // 图层节点点击显示点位
 const layerChange = async (current: NodeReturn | NodeReturn[]) => {
-    console.log(current, 'currentCheck是什麽');
     if (Array.isArray(current)) {
         //初始渲染时调用
         for (let i = 0; i < current.length; i++) {

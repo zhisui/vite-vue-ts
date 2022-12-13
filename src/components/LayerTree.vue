@@ -70,8 +70,6 @@ const checkNav = (status: boolean, titlesArr: string[]) => {
     });
 };
 
-
-
 const initLayers = () => {
     const typeList: any = {
         //所需要的显示的点位
