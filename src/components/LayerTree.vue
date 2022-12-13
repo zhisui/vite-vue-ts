@@ -48,20 +48,21 @@ const getCheckedNodes = () => {
 };
 
 const changeCheck = (checked: boolean, title: string) => {
-    nav.forEach((item) => {
-        if (item.title === title) {
-            if (item.hasOwnProperty('expand')) {
-                item.expand = checked;
-            }
-            item.checked = checked;
-            if (item.children && item.children.length > 0) {
-                changeCheck(checked, item.children as any);
-            }
+    nav.reduce((pre: any[], cur: any) => {
+        if (JSON.stringify(cur.children).includes(title)) {
+            cur.expand = true;
+        }else {
+            cur.expand = false
         }
-    });
+        if (cur.title === title) {
+            cur.checked = checked;
+        }
+        pre.push(cur);
+        return pre;
+    }, []);
 };
 
-const checkNav = (status:boolean, titlesArr: string[]) => {
+const checkNav = (status: boolean, titlesArr: string[]) => {
     titlesArr.forEach((title) => {
         if (JSON.stringify(nav).includes(title)) {
             changeCheck(status, title);
@@ -69,27 +70,14 @@ const checkNav = (status:boolean, titlesArr: string[]) => {
     });
 };
 
-const getAllNavTitles = (navList: typeof nav) => {
-    let titleArr: string[] = [];
-    navList.forEach((item) => {
-        if (item.title) {
-            titleArr.push(item.title);
-        }
-        if (item.children) {
-            getAllNavTitles(item.children as any);
-        }
-    });
-    return titleArr;
-};
+
 
 const initLayers = () => {
-    // 初始时需将所有的结点重置为未选中状态，再根据typeList动态渲染
-    const navTitles = getAllNavTitles(nav)
-    checkNav(false, navTitles);
-    const typeList: any = {  //所需要的显示的点位
+    const typeList: any = {
+        //所需要的显示的点位
         pollute: ['废气', '废水'],
     };
-    checkNav(true,typeList[props.type]);
+    checkNav(true, typeList[props.type]);
 };
 </script>
 
