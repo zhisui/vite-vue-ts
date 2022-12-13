@@ -35,7 +35,7 @@
                     <template v-for="(point, id) in polluteGas.points">
                         <ol-marker
                             :options="point"
-                            @singleclick="test"
+                            @singleclick="markerClick(point)"
                             :key="'tailing' + id"></ol-marker>
                     </template>
                 </ol-markers>
@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts" setup>
-import { SucMap, OlLayer, OlControl, OlMarker, OlMarkers, OlOverlay,coordinateTransform } from '@suc/gnet-monch';
+import { SucMap, OlLayer, OlControl, OlMarker, OlMarkers, OlOverlay,coordinateTransform,OlFlash } from '@suc/gnet-monch';
 import { OlMap } from '@/utils/Map';
 import { PointsType } from '@/types/common';
 import { mapStore } from '@/stores/mapStore';
@@ -64,19 +64,7 @@ const props = defineProps<{
 // }
 const { polluteGas, polluteWater } = props.mapPoints;
 const mapState = mapStore();
-mapState.setMapOverlay({
-        show: true,
-        position: [0,0],
-        component: '',
-        info: {},
-    });
-
-const test = () => {
-    alert('test')
-    console.log('test')
-}
 const markerClick = (data: typeof mapState.mapOverlay) => {
-    // alert(data)
     console.log(mapState.mapOverlay, 'mapState.mapOverlay测试一下');
     const info = data?.info;
     const jd = parseFloat(info.jd || info.JD || info.LONGITUDE);

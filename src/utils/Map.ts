@@ -10,7 +10,7 @@ export class OlMap {
         if (common) {
             Object.assign(this, common);
         } else {
-            Object.assign(this, cloneDeep(window.mapConfig), { map: id ? { id } : {} });
+            Object.assign(this, cloneDeep(window.mapConfig));
         }
     }
 
