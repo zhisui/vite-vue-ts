@@ -95,7 +95,6 @@ const initLayers = async () => {
         pollute: ['废气', '测试2.0'],
     };
     navObj.value = await getLayerNavObj();
-    console.log(navObj.value, 'navObj.value');
     checkNav(typeList[props.type]);
 };
 </script>
