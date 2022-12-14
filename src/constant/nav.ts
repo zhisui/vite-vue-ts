@@ -2,32 +2,34 @@
 
 
 export const nav = [
-    {//0
+    {//[0]
         title: "e企管企业",
         checked: false,
         expand: true,
         children: [
-            {
+            { //[0 1]
                 title: '印染企业',
                 checked: false,
             },
-            {
+            { //[0 2]
                 title: '重点排污单位',
                 checked: false,
+                expand: true,
+
             },
-            {
+            { //[0,3]
                 title: '排污许可证简化管理',
                 checked: false,
             },
-            {
+            { //[0,4]
                 title: '风险企业',
                 checked: false,
             },
-            {
+            { //[0,5]
                 title: '近五年犯罪记录企业',
                 checked: false,
             },
-            {
+            { //[0,6]
                 title: '双随机一公开企业',
                 checked: false,
             },
@@ -43,6 +45,23 @@ export const nav = [
             {
                 title: '废水',
                 checked: true,
+                children: [
+                    {
+                        title: '测试1',
+                        checked: false,
+                        children: [
+                            {
+                                title: '测试2.0',
+                                checked: false,
+                            },
+                            {
+                                title: '测试2.1',
+                                checked: false,
+                            },
+
+                        ]
+                    },
+                ]
             },
             {
                 title: '废气',

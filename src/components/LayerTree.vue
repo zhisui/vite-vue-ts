@@ -17,6 +17,7 @@
 <script setup lang="ts">
 import { nav } from '@/constant/nav';
 import CheckChangeReturn from '@/types/common';
+import { getLayerNavObj } from '@/utils/cache';
 
 const props = withDefaults(
     defineProps<{
@@ -29,9 +30,10 @@ const props = withDefaults(
 const emit = defineEmits(['layerChange']);
 const isExpand = ref(false);
 const tree = ref();
+const navObj = ref();
 
-onMounted(() => {
-    initLayers();
+onMounted(async () => {
+    await initLayers();
     getCheckedNodes();
 });
 
@@ -47,35 +49,54 @@ const getCheckedNodes = () => {
     }
 };
 
-const changeCheck = (checked: boolean, title: string) => {
-    nav.reduce((pre: any[], cur: any) => {
-        if (JSON.stringify(cur.children).includes(title)) {
-            cur.expand = true;
-        }else {
-            cur.expand = false
+const changeCheck = (checked: boolean, list: any[]) => {
+    list.forEach((item) => {
+        if (item.hasOwnProperty('expand')) {
+            item.expand = checked;
         }
-        if (cur.title === title) {
-            cur.checked = checked;
+        if (item.hasOwnProperty('checked')) {
+            item.checked = checked;
         }
-        pre.push(cur);
-        return pre;
-    }, []);
-};
-
-const checkNav = (status: boolean, titlesArr: string[]) => {
-    titlesArr.forEach((title) => {
-        if (JSON.stringify(nav).includes(title)) {
-            changeCheck(status, title);
+        if (!checked && item.hasOwnProperty('indeterminate') && item.children) {
+            item.indeterminate = checked;
+        }
+        if (item.children && item.children.length > 0) {
+            changeCheck(checked, item.children);
         }
     });
 };
 
-const initLayers = () => {
+const checkNav = (arr: string[]) => {
+    arr.map((siteName) => {
+        if (navObj.value[siteName]) {
+            navObj.value[siteName].reduce((pre: typeof nav, cur: any, index: number) => {
+                if (pre[cur].children) {
+                    pre[cur].expand = true;
+                    if (index == navObj.value[siteName].length - 1) {
+                        pre[cur].checked = true;
+                        changeCheck(true, pre[cur].children);
+                    } else {
+                        pre[cur].checked = false;
+                    }
+                } else {
+                    pre[cur].checked = true;
+                }
+                console.log(pre[cur].children, 'pre[cur].children');
+                return pre[cur].children;
+            }, nav);
+        }
+    });
+};
+
+const initLayers = async () => {
+    changeCheck(false, nav);
     const typeList: any = {
         //所需要的显示的点位
-        pollute: ['废气', '废水'],
+        pollute: ['废气', '测试2.0'],
     };
-    checkNav(true, typeList[props.type]);
+    navObj.value = await getLayerNavObj();
+    console.log(navObj.value, 'navObj.value');
+    checkNav(typeList[props.type]);
 };
 </script>
 
