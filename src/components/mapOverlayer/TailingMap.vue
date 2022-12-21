@@ -1,5 +1,5 @@
 <template>
-    <div style='position:absolute' v-drag>
+    <div style='{position:absolute}' v-drag>
         <Modal
             :mask="false"
             :value="true"
@@ -9,7 +9,7 @@
             :styles="{ width: '630px', top: '200px', left: '0px' }"
             class="map-modal"
             :z-index="107" >
-            <div class="test">hello</div>
+            <div class="test" v-time="'YYYY'">2022-10-01 22:20:01</div>
         </Modal>
     </div>
 </template>
