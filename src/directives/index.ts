@@ -4,12 +4,14 @@ import type { PluginFunction } from 'vue';
 import dateFormat from './dateFormat';
 import drag from './drag';
 import time from './time';
+import scroll from './scroll'
 
 const directives: any = {
     outclick,
     debounce,
     drag,
-    time
+    time,
+    scroll,
 };
 
 export default {

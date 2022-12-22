@@ -64,7 +64,6 @@ const typeComponentMap:any = {
 const { polluteGas, polluteWater } = props.mapPoints;
 const mapState = mapStore();
 const markerClick = (data: typeof mapState.mapOverlay) => {
-    console.log(mapState.mapOverlay, 'mapState.mapOverlay测试一下');
     const info = data?.info;
     const jd = parseFloat(info.jd || info.JD || info.LONGITUDE);
     const wd = parseFloat(info.wd || info.WD || info.LATITUDE);

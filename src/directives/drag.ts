@@ -2,7 +2,6 @@
   const drag = {
     bind(el: HTMLElement, binding: any) {
      const oDiv = el // 当前元素
-     console.log(el,'el')
     const minTop = Number(oDiv.getAttribute('drag-min-top'))
     const ifMoveSizeArea = 20
     oDiv.onmousedown = e => {

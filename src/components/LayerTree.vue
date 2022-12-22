@@ -81,7 +81,6 @@ const checkNav = (arr: string[]) => {
                 } else {
                     pre[cur].checked = true;
                 }
-                console.log(pre[cur].children, 'pre[cur].children');
                 return pre[cur].children;
             }, nav);
         }
