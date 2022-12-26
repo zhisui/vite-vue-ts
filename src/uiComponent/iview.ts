@@ -1,4 +1,5 @@
-import { Button, Table, Select,Input,Icon,Modal,DropdownMenu,Dropdown,DropdownItem,Tree } from 'iview';
+import { Button, Table, Select,Input,Icon,Modal,DropdownMenu,Dropdown, DropdownItem,Tree } from 'iview';
+import Image from 'iview'
 const iview = {
     install: function (Vue:any) {
         Vue.component('Button', Button);
@@ -12,6 +13,8 @@ const iview = {
         Vue.component('Dropdown', Dropdown);
         Vue.component('DropdownItem', DropdownItem);
         Vue.component('Tree', Tree);
+        Vue.component('Image',Image);
+
     },
 }
 export default iview

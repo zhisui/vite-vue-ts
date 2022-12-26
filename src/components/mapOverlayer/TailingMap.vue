@@ -31,7 +31,6 @@
 
 const scrollHandler =() => {
     console.log('hello');
-
 }
 const scrollData = {
     handler:scrollHandler,
