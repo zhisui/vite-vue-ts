@@ -1,10 +1,10 @@
 <template>
     <div class="header_bar">
-        <div class="header_left" style="flex: 1.1;">
+        <div class="header_left" style="flex: 1.1">
             <ul>
-                <a href="/xkzdap/" style="width: 200px"  target="_blank">
+                <a href="/xkzdap/" style="width: 200px" target="_blank">
                     <li>
-                        <span style="font-size: 18px;">环统与许可衔接试点</span>
+                        <span style="font-size: 18px">环统与许可衔接试点</span>
                     </li>
                 </a>
                 <router-link to="/main/envSituation" v-authox="'ypgzd|access'">
@@ -24,7 +24,7 @@
                 </router-link>
             </ul>
         </div>
-        <div class="header_center" style="flex: 1.3;">
+        <div class="header_center" style="flex: 1.3">
             <div class="tab">
                 <router-link to="/waste" v-authox="'ypgzd|access'">
                     <span class="iconfont icon-qiehuanxitong"></span>
@@ -38,7 +38,7 @@
                         <span>一屏管重点</span>
                     </li>
                 </router-link>
-                <router-link to="/main/cloudMng" v-authox="'ypgzd|access'" :class="{'router-link-active':$route.path.includes('parkCode-park')|$route.path.includes('parkCode-manage')}">
+                <router-link to="/main/cloudMng" v-authox="'ypgzd|access'" :class="{ 'router-link-active': $route.path.includes('parkCode-park') | $route.path.includes('parkCode-manage') }">
                     <li>
                         <span>一码智管服</span>
                     </li>
@@ -54,12 +54,12 @@
                 <!--                    <img src="@/assets/main/config.png" alt="">-->
                 <!--                </div>-->
                 <div class="img-btn" @click="goAuthox">
-                    <img src="@/assets/navbar/config.png" alt="">
+                    <img src="@/assets/navbar/config.png" alt="" />
                 </div>
                 <Dropdown placement="bottom-end" @on-click="changeDrop">
                     <!--                    <span>{{user.DISPLAYNAME?user.DISPLAYNAME:"admin"}}</span>-->
                     <span>{{ userName }}</span>
-                    <Icon type="ios-arrow-down"/>
+                    <Icon type="ios-arrow-down" />
                     <DropdownMenu slot="list">
                         <DropdownItem name="logout">
                             <span>注销登录</span>
@@ -72,70 +72,65 @@
 </template>
 
 <script>
-
 // import {clearCache} from "@/utils/cache";
 
 export default {
-    name: "topBar",
+    name: 'topBar',
     components: {},
     data() {
         return {
             user: {},
-            region: "all",
-            regionList: [
-                {label: "市本级", value: "all"}
-            ],
-            userName: ''
+            region: 'all',
+            regionList: [{ label: '市本级', value: 'all' }],
+            userName: '',
         };
     },
     methods: {
-        initUser(){
+        initUser() {
             this.userName = localStorage.getItem('username');
         },
         getUser() {
-            this.$http.get('/rest/authox/curUser').then(res => {
+            this.$http.get('/rest/authox/curUser').then((res) => {
                 this.user = res.data;
-            })
+            });
         },
         logout() {
             this.$logins.get('/waterloo/logout').then(() => {
-                this.$store.commit("getUserInfo", {});
+                this.$store.commit('getUserInfo', {});
                 clearCache();
                 this.$router.push({
-                    path: '/login'
+                    path: '/login',
                 });
-            })
+            });
         },
-        changeDrop(val){
-            if(val=='logout'){
-                this.logout()
+        changeDrop(val) {
+            if (val == 'logout') {
+                this.logout();
             }
         },
         ouhaiChange() {
-            let {path} = this.$route;
+            const { path } = this.$route;
             if (path.includes('/charaScene/company')) {
-                this.region = "all";
+                this.region = 'all';
                 this.regionList = [
-                    {label: "市本级", value: "all"},
-                    {label: "瓯海区", value: "ouhai"}
-                ]
+                    { label: '市本级', value: 'all' },
+                    { label: '瓯海区', value: 'ouhai' },
+                ];
             } else {
-                this.region = "all";
-                this.regionList = [
-                    {label: "市本级", value: "all"}
-                ]
+                this.region = 'all';
+                this.regionList = [{ label: '市本级', value: 'all' }];
             }
-            this.$store.commit("CHANGE_REGION", this.region);
+            this.$store.commit('CHANGE_REGION', this.region);
         },
         changeRegion(val) {
-            this.$store.commit("CHANGE_REGION", val);
-            this.$bus.$emit('CHANGE_REGION', val)
+            this.$store.commit('CHANGE_REGION', val);
+            this.$bus.$emit('CHANGE_REGION', val);
         },
-        goAuthox(){
-        this.$router.push({
-              path:'/main/authox'
-          })
-        }
+        goAuthox() {
+            this.$router.push({
+                path: '/main/authox',
+            });
+        },
     },
     watch: {
         $route: {
@@ -143,26 +138,24 @@ export default {
                 this.ouhaiChange();
             },
             deep: true,
-        }
+        },
     },
     created() {
         this.ouhaiChange();
         this.initUser();
         // this.getUser();
     },
-    mounted() {
-
-    },
+    mounted() {},
     destroyed() {
-        this.$events.off("resize");
-    }
+        this.$events.off('resize');
+    },
 };
 </script>
 <style lang="scss" scoped>
 .header_bar {
     width: 100%;
     height: 75px;
-    background: url("~@/assets/navbar/topBar.png") no-repeat center;
+    background: url('~@/assets/navbar/topBar.png') no-repeat center;
     background-size: auto;
     display: flex;
     justify-content: center;
@@ -184,10 +177,11 @@ export default {
                 font-size: 20px;
                 line-height: 1;
 
-                &.router-link-active, &:hover {
+                &.router-link-active,
+                &:hover {
                     > li {
                         color: #ffffff;
-                        background: url("~@/assets/navbar/topActive.png") no-repeat bottom center;
+                        background: url('~@/assets/navbar/topActive.png') no-repeat bottom center;
                         background-size: 100% 100%;
                     }
                 }
@@ -209,7 +203,7 @@ export default {
         flex: 1.5;
         position: relative;
 
-        .iconfont{
+        .iconfont {
             font-size: 19px;
             line-height: 23px;
         }
@@ -218,10 +212,10 @@ export default {
             position: absolute;
             right: calc(30% - 10px);
             top: 25px;
-            > a{
+            > a {
                 color: #fff;
             }
-            > span{
+            > span {
                 color: #fff;
             }
         }
@@ -242,13 +236,14 @@ export default {
                 width: 140px;
                 font-size: 20px;
                 line-height: 1;
-                &:last-of-type{
+                &:last-of-type {
                     width: 160px;
                 }
-                &.router-link-active, &:hover {
+                &.router-link-active,
+                &:hover {
                     > li {
                         color: #ffffff;
-                        background: url("~@/assets/navbar/topActive.png") no-repeat bottom center;
+                        background: url('~@/assets/navbar/topActive.png') no-repeat bottom center;
                     }
                 }
 
@@ -341,7 +336,5 @@ export default {
             }
         }
     }
-
-
 }
 </style>

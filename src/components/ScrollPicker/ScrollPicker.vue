@@ -3,15 +3,9 @@
         <div class="picker-view">
             <div class="title">
                 <div @click="cancel">取消</div>
-                <div style="color:#07C160" @click="confirm(modelValIndex)">确认</div>
+                <div style="color: #07c160" @click="confirm(modelValIndex)">确认</div>
             </div>
-            <div
-                id="scroll-picker-container"
-                class="scroll-picker-container noselect"
-                @touchstart="onTouchStart"
-                @touchend="onTouchEnd"
-                @touchmove="onTouchMove"
-                @mousedown="mouseDownStart">
+            <div id="scroll-picker-container" class="scroll-picker-container noselect" @touchstart="onTouchStart" @touchend="onTouchEnd" @touchmove="onTouchMove" @mousedown="mouseDownStart">
                 <div
                     id="scroll-picker-move"
                     class="scroll-picker-move"
@@ -19,12 +13,7 @@
                         transform: `translateY(${translateY}px) translateX(0px) translateZ(1px)`,
                         transitionDuration: `${transitionDuration}ms`,
                     }">
-                    <div
-                        v-for="(item, index) in columns"
-                        :key="index"
-                        class="scroll-picker-move__item"
-                        :style="{ height: itemHeight + 'px' }"
-                        @click="moveTo(index)">
+                    <div v-for="(item, index) in columns" :key="index" class="scroll-picker-move__item" :style="{ height: itemHeight + 'px' }" @click="moveTo(index)">
                         <span
                             :class="[
                                 index === modelValIndex
@@ -187,55 +176,34 @@ export default defineComponent({
         };
 
         // 超出边界加阻力
-        const performDampingAlgorithm = (
-            max: number,
-            min: number,
-            delta: number,
-            currentPos: number,
-            dampingFactor: number
-        ) => {
+        const performDampingAlgorithm = (max: number, min: number, delta: number, currentPos: number, dampingFactor: number) => {
             const newPos = delta + currentPos;
             if (newPos > max) {
-                let dis = (newPos - max) * dampingFactor;
+                const dis = (newPos - max) * dampingFactor;
                 if (dis > itemHeight) {
                     transitionDuration.value = 0;
                     modelValIndex.value = 0;
                     return max;
-                } else {
-                    return max + dis;
                 }
+                return max + dis;
             } else if (newPos < min) {
-                let dis = (newPos - min) * dampingFactor;
+                const dis = (newPos - min) * dampingFactor;
                 if (dis < -props.itemHeight) {
                     transitionDuration.value = 0;
                     modelValIndex.value = props.columns.length - 1;
                     return min;
-                } else {
-                    return min + dis;
                 }
-            } else {
-                return newPos;
+                return min + dis;
             }
+            return newPos;
         };
 
         const handleMove = (deltaCache: { x: number; y: number }) => {
             if (Math.abs(deltaCache.x) > Math.abs(deltaCache.y)) {
                 //transXBf.value + deltaCache.x
-                translateY.value = performDampingAlgorithm(
-                    maxMoveX.value,
-                    minMoveX.value,
-                    deltaCache.x,
-                    transXBf.value,
-                    props.dampingFactor
-                );
+                translateY.value = performDampingAlgorithm(maxMoveX.value, minMoveX.value, deltaCache.x, transXBf.value, props.dampingFactor);
             } else {
-                translateY.value = performDampingAlgorithm(
-                    maxMoveX.value,
-                    minMoveX.value,
-                    deltaCache.y,
-                    transXBf.value,
-                    props.dampingFactor
-                );
+                translateY.value = performDampingAlgorithm(maxMoveX.value, minMoveX.value, deltaCache.y, transXBf.value, props.dampingFactor);
             }
         };
 
@@ -251,11 +219,11 @@ export default defineComponent({
         };
 
         const cancel = () => {
-            context.emit('cancel')
-        }
-        const confirm = (modelValIndex:number) => {
-            context.emit('confirm',modelValIndex)
-        }
+            context.emit('cancel');
+        };
+        const confirm = (modelValIndex: number) => {
+            context.emit('confirm', modelValIndex);
+        };
         let clearWindowEvent: any = null;
         onMounted(() => {
             initPicker();
@@ -298,8 +266,7 @@ export default defineComponent({
             performDampingAlgorithm,
             initPicker,
             cancel,
-            confirm
-
+            confirm,
         };
     },
 });
@@ -315,14 +282,14 @@ export default defineComponent({
     animation-name: slideInUp;
 }
 @keyframes slideInUp {
-  from {
-    transform: translate3d(0, 100%, 0);
-    visibility: visible;
-  }
+    from {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
 
-  to {
-    transform: translate3d(0, 0, 0);
-  }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
 }
 .noselect {
     -webkit-touch-callout: none;
@@ -339,24 +306,23 @@ export default defineComponent({
     bottom: 0;
     padding: 10px;
     z-index: 2000;
-    width:100%;
+    width: 100%;
     background-color: #fff;
     .title {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            font-size: 16px;
-            font-weight: 600;
-            >div {
-                cursor: pointer;
-                 transition: 0.2s ease;
-                &:hover{
-                    transform: scale(1.2);
-                }
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: 600;
+        > div {
+            cursor: pointer;
+            transition: 0.2s ease;
+            &:hover {
+                transform: scale(1.2);
             }
-            border-bottom:1px solid #F5F5F5;
-
         }
+        border-bottom: 1px solid #f5f5f5;
+    }
 }
 
 .scroll-picker-container {
@@ -384,8 +350,8 @@ export default defineComponent({
                 width: 100%;
                 text-align: center;
                 color: #262626;
-                border-bottom: 1px solid #F5F5F5;
-                border-top: 1px solid #F5F5F5;
+                border-bottom: 1px solid #f5f5f5;
+                border-top: 1px solid #f5f5f5;
             }
             &--gray {
                 color: #565656;

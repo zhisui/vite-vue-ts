@@ -1,5 +1,2 @@
-import * as testApi from './test'
-export {
-    testApi
-}
-
+import * as testApi from './test';
+export { testApi };

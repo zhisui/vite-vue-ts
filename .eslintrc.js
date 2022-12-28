@@ -35,7 +35,7 @@ module.exports = {
         'no-shadow': 'off',
         complexity: 'off',
         'no-undef': 'off',
-        'prettier/prettier': 'error',
+        // 'prettier/prettier': 'error',
         // 强制回调函数最大嵌套深度
         'max-nested-callbacks': ['warn', 3],
         '@typescript-eslint/no-var-requires': 'off',

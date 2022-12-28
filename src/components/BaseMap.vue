@@ -6,11 +6,7 @@
                 <ol-control :key="index" :name="item.name" :config="item.config"></ol-control>
             </template>
             <!--基础底图-->
-            <ol-layer
-                :options="layer"
-                :key="layer.name"
-                v-for="layer in olMap.baseLayer"
-                v-if="layer.source.visible"></ol-layer>
+            <ol-layer :options="layer" :key="layer.name" v-for="layer in olMap.baseLayer" v-if="layer.source.visible"></ol-layer>
 
             <!-- 地图点位弹窗,-->
             <template v-if="mapState.mapOverlay?.show">
@@ -20,22 +16,13 @@
             </template>
             <!-- 地图闪烁点 -->
             <template v-if="mapState?.flashPoint?.show">
-                <ol-flash
-                    :coords="mapState.flashPoint.position"
-                    :loops="flashPointStyle.loops"
-                    :duration="flashPointStyle.duration"
-                    :radius-range="flashPointStyle.radiusRange"
-                    :circle-style="flashPointStyle.style"
-                    :zIndex="20" />
+                <ol-flash :coords="mapState.flashPoint.position" :loops="flashPointStyle.loops" :duration="flashPointStyle.duration" :radius-range="flashPointStyle.radiusRange" :circle-style="flashPointStyle.style" :zIndex="20" />
             </template>
             <!-- 尾矿库点位 -->
             <template>
                 <ol-markers v-if="polluteGas.show" :zIndex="100">
                     <template v-for="(point, id) in polluteGas.points">
-                        <ol-marker
-                            :options="point"
-                            @singleclick="markerClick(point)"
-                            :key="'tailing' + id"></ol-marker>
+                        <ol-marker :options="point" @singleclick="markerClick(point)" :key="'tailing' + id"></ol-marker>
                     </template>
                 </ol-markers>
             </template>
@@ -44,7 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import { SucMap, OlLayer, OlControl, OlMarker, OlMarkers, OlOverlay,coordinateTransform,OlFlash } from '@suc/gnet-monch';
+import { SucMap, OlLayer, OlControl, OlMarker, OlMarkers, OlOverlay, coordinateTransform, OlFlash } from '@suc/gnet-monch';
 import { OlMap } from '@/utils/Map';
 import { PointsType } from '@/types/common';
 import { mapStore } from '@/stores/mapStore';
@@ -58,17 +45,17 @@ const props = defineProps<{
         polluteWater: PointsType;
     };
 }>();
-const typeComponentMap:any = {
-	'TailingMap':TailingMap
-}
-const { polluteGas, polluteWater } = props.mapPoints;
+const typeComponentMap: any = {
+    TailingMap: TailingMap,
+};
+const { polluteGas, polluteWater } = toRefs(props.mapPoints);
 const mapState = mapStore();
 const markerClick = (data: typeof mapState.mapOverlay) => {
     const info = data?.info;
     const jd = parseFloat(info.jd || info.JD || info.LONGITUDE);
     const wd = parseFloat(info.wd || info.WD || info.LATITUDE);
     const position = [jd, wd];
-    let coord = coordinateTransform([position[0], position[1]], 'EPSG:4326', 'EPSG:3857');
+    const coord = coordinateTransform([position[0], position[1]], 'EPSG:4326', 'EPSG:3857');
     baseMap.value.getMap().then((map: any) => {
         map.getView().animate({ center: coord, zoom: 14 });
     });
