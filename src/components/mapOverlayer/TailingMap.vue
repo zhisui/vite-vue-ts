@@ -1,5 +1,5 @@
 <template>
-    <div style='position:absolute' v-drag>
+    <div style="position: absolute" v-drag>
         <Modal
             :mask="false"
             :value="true"
@@ -8,9 +8,9 @@
             draggable
             :styles="{ width: '630px', top: '200px', left: '0px' }"
             class="map-modal"
-            :z-index="107" >
+            :z-index="107">
             <div class="test" v-time="'YYYY'">2022-10-01 22:20:01</div>
-            <div class="scroll-container" v-scroll='scrollData'>
+            <div class="scroll-container" v-scroll="scrollData">
                 <div>1</div>
                 <div>1</div>
                 <div>1</div>
@@ -28,16 +28,15 @@
     </div>
 </template>
 <script lang="ts" setup>
-
-const scrollHandler =() => {
+const scrollHandler = () => {
     console.log('hello');
-}
+};
 const scrollData = {
-    handler:scrollHandler,
-    pageNum:1,
-    sliceList:[1,2,3,4,5,6],
-    listTotal:5
-}
+    handler: scrollHandler,
+    pageNum: 1,
+    sliceList: [1, 2, 3, 4, 5, 6],
+    listTotal: 5,
+};
 </script>
 <style lang="scss" scoped>
 .map-modal {
@@ -50,7 +49,7 @@ const scrollData = {
             background-size: 100% 100%;
             box-shadow: none;
         }
-        .ivu-modal-body{
+        .ivu-modal-body {
             // padding:0;
         }
     }
@@ -59,8 +58,8 @@ const scrollData = {
         width: 100%;
         height: 100px;
     }
-    .scroll-container{
-        height:100px;
+    .scroll-container {
+        height: 100px;
         overflow-y: scroll;
     }
 }

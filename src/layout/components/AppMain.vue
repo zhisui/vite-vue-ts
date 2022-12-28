@@ -4,16 +4,14 @@
     </div>
 </template>
 
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 <script lang="ts">
 export default {};
 </script>
 <style lang="scss" scoped>
 .app-main {
-  height: calc(100% - #{$top-bar-height + $bottom-bar-height});
-  width:100vw;
-  overflow: hidden;
+    height: calc(100% - #{$top-bar-height + $bottom-bar-height});
+    width: 100vw;
+    overflow: hidden;
 }
 </style>

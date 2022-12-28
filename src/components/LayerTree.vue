@@ -18,7 +18,6 @@
 import { nav } from '@/constant/nav';
 import CheckChangeReturn from '@/types/common';
 import { getLayerNavObj } from '@/utils/cache';
-
 const props = withDefaults(
     defineProps<{
         type?: string;
@@ -40,7 +39,6 @@ onMounted(async () => {
 const handleNodeChange = (allNode: CheckChangeReturn[], currentNode: CheckChangeReturn) => {
     emit('layerChange', currentNode);
 };
-
 const getCheckedNodes = () => {
     let nodes;
     if (tree.value) {

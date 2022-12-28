@@ -1,1 +1,1 @@
-export {default as TailingMap} from './TailingMap.vue'
+export { default as TailingMap } from './TailingMap.vue';

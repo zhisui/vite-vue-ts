@@ -59,6 +59,8 @@
     "@types/ol": "^6.5.3",
     "@types/qs": "^6.9.7",
     "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
     "@vitejs/plugin-legacy": "^2.3.0",
     "@vitejs/plugin-vue2": "^2.0.0",
     "amfe-flexible": "^2.2.1",
@@ -66,7 +68,11 @@
     "babel-plugin-component": "^1.1.1",
     "babel-plugin-import": "^1.13.5",
     "dom-to-code": "^1.5.4",
-    "postcss-pxtorem": "^6.0.0",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.8.0",
+    "prettier": "^2.8.1",
     "rollup-plugin-visualizer": "^5.8.3",
     "sass": "^1.55.0",
     "terser": "^5.15.1",
@@ -85,5 +91,9 @@
   "dspacev": {
     "template": "vue2",
     "registry": "http://devops4.sucsoft.com:30706/"
+  },
+  "script": {
+    "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
+    "prettier": "prettier --write ."
   }
 }

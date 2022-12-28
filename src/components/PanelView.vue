@@ -3,13 +3,13 @@
         <div class="header">
             <div class="header-left">
                 <div>
-                    <span class="title">{{ title }}</span>
+                    <span class="title">{{ props.title }}</span>
                 </div>
                 <slot name="left"></slot>
             </div>
             <div class="header-right">
                 <slot name="right">
-                    <template v-if="isDay">
+                    <template v-if="props.isDay">
                         <el-date-picker
                             v-model="day"
                             type="date"
@@ -21,7 +21,7 @@
                             @change="changeTime(day)">
                         </el-date-picker>
                     </template>
-                    <template v-if="isMonth">
+                    <template v-if="props.isMonth">
                         <el-date-picker
                             v-model="month"
                             type="month"
@@ -79,10 +79,9 @@ const pickerOptions = reactive({
         return time.getTime() > new Date(date).getTime();
     },
 });
-const changeTime = (time:Date | string) => {
+const changeTime = (time: Date | string) => {
     emit('changeTime', time);
 };
-
 </script>
 
 <style lang="scss" scoped>

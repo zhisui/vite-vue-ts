@@ -32,6 +32,4 @@
 // window.onresize = function () {
 //   setRem()
 // }
-
-
 </script>

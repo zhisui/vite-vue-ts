@@ -3,7 +3,7 @@
         <div class="header">
             <div class="header-left">
                 <div>
-                    <span>{{ title }}</span>
+                    <span>{{ props.title }}</span>
                 </div>
                 <slot name="left"></slot>
             </div>

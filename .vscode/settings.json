@@ -15,6 +15,25 @@
   "emmet.includeLanguages": {
     "vue-html": "html"
   },
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "eslint.codeAction.disableRuleComment": {
+    "enable": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "javascriptvue",
+  ],
+  "eslint.codeActionsOnSave.mode": "all",
+  "eslint.run": "onSave",
+  "editor.defaultFormatter": null,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

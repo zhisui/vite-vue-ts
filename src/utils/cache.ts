@@ -6,7 +6,7 @@ export const memoryCache = await caching('memory', {
 });
 
 export const getLayerNavObj = async () => {
-    return await memoryCache.wrap('navMap', () => findIndex(nav, {}, []),1000);
+    return await memoryCache.wrap('navMap', () => findIndex(nav, {}, []), 1000);
 };
 
 //获取环保图层下标
@@ -18,12 +18,11 @@ export const findIndex = async (nav: any[], obj: any, arr = []) => {
         }
     });
     return Promise.resolve(obj);
-}
-
+};
 
 /**
  * 销毁
  */
-export const clearCache =async () => {
+export const clearCache = async () => {
     await memoryCache.del('navMap');
-}
+};
