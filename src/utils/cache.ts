@@ -5,8 +5,8 @@ export const memoryCache = await caching('memory', {
     ttl: 10 * 1000 /*milliseconds*/,
 });
 
-export const getLayerNavObj = async () => {
-    return await memoryCache.wrap('navMap', () => findIndex(nav, {}, []), 1000);
+export const getLayerNavObj = () => {
+    return memoryCache.wrap('navMap', () => findIndex(nav, {}, []), 1000);
 };
 
 //获取环保图层下标

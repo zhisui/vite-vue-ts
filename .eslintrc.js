@@ -70,7 +70,7 @@ module.exports = {
         // 要求使用 === 和 !==
         eqeqeq: 'warn',
         // 禁止 if 语句中 return 语句之后有 else 块
-        'no-else-return': 'warn',
+        'no-else-return': 'off',
         // 禁止出现空函数
         'no-empty-function': 'warn',
         // 禁用不必要的嵌套块

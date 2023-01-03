@@ -3,14 +3,17 @@
         <Map type="pollute" />
         <div class="main-view">
             <div class="left">
-                <div class="left-item">1</div>
-                <div class="left-item">2</div>
+                <div class="left-item" @click="modalShow = true">点开弹窗</div>
+                <div class="left-item">22</div>
                 <div class="left-item">3</div>
             </div>
             <div class="center"></div>
             <div class="right">
                 <div class="right-item">1</div>
             </div>
+        </div>
+        <div class="panel">
+            <PanelView v-if="modalShow" title="测试" @close="modalShow = false" />
         </div>
     </div>
 </template>
@@ -24,8 +27,12 @@ import ScrollPicker from '@/components/ScrollPicker/ScrollPicker.vue';
 import TestFilter from './TestFilter.vue';
 import { Map } from '@/components';
 import dayjs from 'dayjs';
+import { PanelView } from '@/components';
+
 // import dateFormat from '@/directives/dateFormat';
 const rate = ref(0);
+const modalShow = ref(false);
+
 const getData = async () => {
     const params = {
         time: dayjs().format('YYYY-MM'),
@@ -34,8 +41,8 @@ const getData = async () => {
     console.log(res.datas[0], 'res');
 };
 
-var value = 0.5;
-var data = [value, value, value];
+const value = 0.5;
+const data = [value, value, value];
 const option = {
     grid3D: {},
     xAxis3D: {},
@@ -202,7 +209,6 @@ const option = {
 //     ],
 // };
 
-const updateData = () => {};
 getData();
 const click = () => {
     // // @ts-ignore
@@ -281,5 +287,13 @@ const click = () => {
             }
         }
     }
+}
+
+.panel {
+    position: absolute;
+    top: 0;
+    left: 440px;
+    width: 200px;
+    height: 200px;
 }
 </style>

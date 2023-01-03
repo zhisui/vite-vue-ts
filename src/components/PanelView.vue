@@ -10,44 +10,18 @@
             <div class="header-right">
                 <slot name="right">
                     <template v-if="props.isDay">
-                        <el-date-picker
-                            v-model="day"
-                            type="date"
-                            :picker-options="pickerOptions"
-                            :clearable="false"
-                            style="width: 140px"
-                            size="small"
-                            unlink-panels
-                            @change="changeTime(day)">
-                        </el-date-picker>
+                        <el-date-picker v-model="day" type="date" :picker-options="pickerOptions" :clearable="false" style="width: 140px" size="small" unlink-panels @change="changeTime(day)"> </el-date-picker>
                     </template>
                     <template v-if="props.isMonth">
-                        <el-date-picker
-                            v-model="month"
-                            type="month"
-                            :picker-options="pickerOptions"
-                            :clearable="false"
-                            style="width: 120px"
-                            size="small"
-                            unlink-panels
-                            @change="changeTime(month)">
-                        </el-date-picker>
+                        <el-date-picker v-model="month" type="month" :picker-options="pickerOptions" :clearable="false" style="width: 120px" size="small" unlink-panels @change="changeTime(month)"> </el-date-picker>
                     </template>
                     <template v-if="props.isYear">
-                        <el-date-picker
-                            v-model="year"
-                            type="year"
-                            :picker-options="pickerOptions"
-                            :clearable="false"
-                            style="width: 100px"
-                            size="small"
-                            unlink-panels
-                            @change="changeTime(year)">
-                        </el-date-picker>
+                        <el-date-picker v-model="year" type="year" :picker-options="pickerOptions" :clearable="false" style="width: 100px" size="small" unlink-panels @change="changeTime(year)"> </el-date-picker>
                     </template>
                 </slot>
             </div>
         </div>
+        <div class="close" @click="close"></div>
         <slot></slot>
     </div>
 </template>
@@ -68,19 +42,23 @@ const props = withDefaults(defineProps<PropsType>(), {
     yearTime: '',
     monthTime: '',
 });
-const emit = defineEmits(['changeTime']);
+const emit = defineEmits(['changeTime', 'close']);
 
 const day = ref(dayjs().format('YYYY-MM-DD'));
 const month = ref(props.monthTime ? dayjs(props.monthTime).format('YYYY-MM') : dayjs().format('YYYY-MM'));
 const year = ref(props.yearTime ? dayjs().format(props.yearTime) : dayjs().format('YYYY'));
 const pickerOptions = reactive({
     disabledDate: (time: Date) => {
-        let date = dayjs().set('month', 0).add(1, 'year').subtract(1, 'month').format('YYYY-MM');
+        const date = dayjs().set('month', 0).add(1, 'year').subtract(1, 'month').format('YYYY-MM');
         return time.getTime() > new Date(date).getTime();
     },
 });
 const changeTime = (time: Date | string) => {
     emit('changeTime', time);
+};
+
+const close = () => {
+    emit('close');
 };
 </script>
 
@@ -129,16 +107,12 @@ $deep: '::v-deep';
 }
 
 .panel-view {
-    // position: relative;
+    position: relative;
     padding: 16px;
     height: 100%;
+    width: 100%;
     z-index: 2;
-    background-image: linear-gradient(
-        180deg,
-        rgba(2, 42, 89, 0.98) 0%,
-        rgba(2, 42, 89, 0.98) 50%,
-        rgba(1, 78, 144, 0.98) 100%
-    );
+    background-image: linear-gradient(180deg, rgba(2, 42, 89, 0.98) 0%, rgba(2, 42, 89, 0.98) 50%, rgba(1, 78, 144, 0.98) 100%);
     border-radius: 10px;
     border: solid 1px #2b6b94;
     filter: blur(50px);
@@ -155,7 +129,7 @@ $deep: '::v-deep';
             display: flex;
             .title {
                 font-family: ShiShangZhongHeiJianTi;
-                font-size: 20px;
+                font-size: 16px;
             }
         }
 
@@ -165,5 +139,16 @@ $deep: '::v-deep';
             color: rgba($color: #fff, $alpha: 0.8);
         }
     }
+}
+
+.close {
+    position: absolute;
+    top: 0px;
+    right: -30px;
+    width: 50px;
+    height: 28px;
+    cursor: pointer;
+    background: url('~@/assets/pop/close.png') no-repeat;
+    background-size: 100% 100%;
 }
 </style>

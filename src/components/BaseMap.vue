@@ -72,6 +72,13 @@ const markerClick = (data: typeof mapState.mapOverlay) => {
 };
 </script>
 <style lang="scss" scoped>
+// ::v-deep .vueol-overlay {
+//     //改变地图overlay的默认样式，才可正常设置宽度
+//     width: auto;
+//     background-color: transparent;
+//     -webkit-box-shadow: none;
+//     box-shadow: none;
+// }
 .map {
     height: 100%;
     width: 100%;

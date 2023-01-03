@@ -6,8 +6,11 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BaseMap: typeof import('./src/components/BaseMap.vue')['default']
+    Dialog: typeof import('./src/components/Dialog.vue')['default']
+    DragPop: typeof import('./src/components/DragPop.vue')['default']
     LayerTree: typeof import('./src/components/LayerTree.vue')['default']
     Map: typeof import('./src/components/Map.vue')['default']
+    MapPop: typeof import('./src/components/DragPop.vue')['default']
     PanelView: typeof import('./src/components/PanelView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -15,5 +18,7 @@ declare module 'vue' {
     SubTitle: typeof import('./src/components/SubTitle.vue')['default']
     TabBtn: typeof import('./src/components/TabBtn.vue')['default']
     TailingMap: typeof import('./src/components/mapOverlayer/TailingMap.vue')['default']
+    Teleort: typeof import('./src/components/Teleport.vue')['default']
+    Teleport: typeof import('./src/components/Teleport.vue')['default']
   }
 }

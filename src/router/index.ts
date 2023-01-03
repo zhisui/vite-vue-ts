@@ -7,10 +7,11 @@ export default new Router({
             path: '',
             redirect: '/main',
         },
-        { //懒加载
+        {
+            //懒加载
             path: '/main',
             redirect: { name: 'test' },
-            component: () => import('../layout/Main.vue'),
+            component: () => import('@/layout/Main.vue'),
             children: [
                 {
                     name: 'test',
