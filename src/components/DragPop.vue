@@ -8,10 +8,10 @@
                     <div class="header" style="cursor: move">
                         <span class="title">{{ title }}</span>
                     </div>
-                    <div class="body" style="cursor: auto">
+                    <div class="body">
                         <slot name="body" />
                     </div>
-                    <div class="footer" style="cursor: auto">
+                    <div class="footer">
                         <slot name="footer" />
                     </div>
                 </div>
